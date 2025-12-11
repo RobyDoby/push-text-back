@@ -77,7 +77,7 @@ async function sendItem(item) {
       .catch((err) => {
         if (err.statusCode === 410 || err.statusCode === 404) {
           // Подписка недействительна — удаляем
-          subscriptions.splice(i, 1)
+          subscriptions.splice(subscriptions.indexOf(sub), 1)
           saveSubscriptions()
           console.log('Removed expired subscription', sub.endpoint)
         } else {
