@@ -1,0 +1,11 @@
+{
+  "scheduled": [
+    {
+      "id": "ad15ab1f-db1d-45ff-8339-fdafb9c8b1f6",
+      "text": "Напоминание!",
+      "timestamp": 1765401960000,
+      "createdAt": 1765401918686,
+      "status": "sent"
+    }
+  ]
+}
