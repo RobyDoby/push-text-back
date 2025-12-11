@@ -12,7 +12,9 @@ const DATA_FILE = path.join(__dirname, '..', 'data.json')
 
 const app = express()
 app.use(cors({
-  origin: ['https://robydoby.github.io/Push-test/', 'http://localhost:3000'],
+  origin: 'https://robydoby.github.io/', 
+  methods: ['GET','POST','PUT','DELETE','OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true
 }));
 app.use(express.json())
