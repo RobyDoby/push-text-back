@@ -11,13 +11,22 @@ dotenv.config()
 const DATA_FILE = path.join(__dirname, '..', 'data.json')
 
 const app = express()
-app.use(cors({
-  origin: 'https://robydoby.github.io', 
-  methods: ['GET','POST','PUT','DELETE','OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization'],
-  credentials: true
-}));
-app.options('/*', cors());
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "https://robydoby.github.io");
+  res.header("Access-Control-Allow-Methods", "GET,POST,PUT,DELETE,OPTIONS");
+  res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
+  res.header("Access-Control-Allow-Credentials", "true");
+
+  // Preflight success
+  if (req.method === "OPTIONS") {
+    return res.sendStatus(204);
+  }
+
+  next();
+});
+app.get("/", (req, res) => {
+  res.json({ status: "ok" });
+});
 app.use(express.json())
 
 const subscriptions = []
