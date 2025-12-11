@@ -12,11 +12,12 @@ const DATA_FILE = path.join(__dirname, '..', 'data.json')
 
 const app = express()
 app.use(cors({
-  origin: 'https://robydoby.github.io/', 
+  origin: 'https://robydoby.github.io', 
   methods: ['GET','POST','PUT','DELETE','OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true
 }));
+app.options('*', cors());
 app.use(express.json())
 
 const subscriptions = []
